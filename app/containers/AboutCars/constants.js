@@ -1,0 +1,13 @@
+export const GET_CARS = 'app/AboutCars/GET_CARS';
+export const SET_ERROR = 'app/Mystery/SET_ERROR';
+export const SET_RESPONCE = 'app/Mystery/SET_RESPONCE';
+export const SET_LOADING = 'app/Mystery/SET_LOADING';
+export const SET_DATA_CARS = 'app/Mystery/SET_DATA_CARS';
+export const SET_NEW_CAR = 'app/Mystery/SET_NEW_CAR';
+export const ADD_NEW_CAR = 'app/Mystery/ADD_NEW_CAR';
+export const DELETE_CAR = 'app/Mystery/DELETE_CAR';
+export const SET_ID_CAR = 'app/Mystery/SET_ID_CAR';
+export const GET_CAR_BY_ID = 'app/Mystery/GET_CAR_BY_ID';
+export const SET_DATA_CAR_EDIT = 'app/Mystery/SET_DATA_CAR_EDIT';
+export const EDIT_CAR = 'app/Mystery/EDIT_CAR';
+export const SET_EDIT_CAR = 'app/Mystery/SET_EDIT_CAR';
