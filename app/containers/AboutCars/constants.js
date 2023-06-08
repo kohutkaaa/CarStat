@@ -1,0 +1,12 @@
+export const GET_DATA_CARS = 'app/AboutCars/GET_DATA_CARS';
+export const SET_ERROR = 'app/AboutCars/SET_ERROR';
+export const SET_RESPONCE = 'app/AboutCars/SET_RESPONCE';
+export const SET_LOADING = 'app/AboutCars/SET_LOADING';
+export const SET_DATA_CARS = 'app/AboutCars/SET_DATA_CARS';
+export const SET_DATA_NEW_CAR = 'app/AboutCars/SET_DATA_NEW_CAR';
+export const ADD_NEW_CAR = 'app/AboutCars/ADD_NEW_CAR';
+export const DELETE_CAR = 'app/AboutCars/DELETE_CAR';
+export const GET_CAR_FOR_EDITING = 'app/AboutCars/GET_CAR_FOR_EDITING';
+export const SET_CAR_FOR_EDITING = 'app/AboutCars/SET_CAR_FOR_EDITING';
+export const EDIT_CAR = 'app/AboutCars/EDIT_CAR';
+export const SET_DATA_EDIT_CAR = 'app/AboutCars/SET_DATA_EDIT_CAR';
