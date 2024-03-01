@@ -36,7 +36,7 @@ function NavCars({ saveCar, saveCarShow, carModel, cars }) {
               <li className="nav-item" role="presentation" key={index}>
                 <button
                   className={
-                    carModel === item.attributes.Model
+                    carModel === item.attributes.Model ?
                       "nav-link active btn d-flex flex-column align-items-center justify-content-center" :
                       "nav-link btn d-flex flex-column align-items-center justify-content-center"}
                   onClick={() => {
