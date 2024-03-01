@@ -10,23 +10,24 @@ import 'sanitize.css/sanitize.css';
 
 import App from 'containers/App';
 
-import './main.css/apex-charts.css'
-import './main.css/core.css'
-import './main.css/theme-default.css'
-import './main.css/demo.css'
-import './main.css/datatables.bootstrap5.css'
-import './main.css/datatables.checkboxes.css'
-import './main.css/responsive.bootstrap5.css'
-import './main.css/node-waves.css'
-import './main.css/perfect-scrollbar.css'
-import './main.css/swiper.css'
-import './main.css/typeahead.css'
-import './main.css/cards-advance.css'
+import './main.css/apex-charts.css';
+import './main.css/core.css';
+import './main.css/theme-default.css';
+import './main.css/demo.css';
+import './main.css/datatables.bootstrap5.css';
+import './main.css/datatables.checkboxes.css';
+import './main.css/responsive.bootstrap5.css';
+import './main.css/node-waves.css';
+import './main.css/perfect-scrollbar.css';
+import './main.css/swiper.css';
+import './main.css/typeahead.css';
+import './main.css/cards-advance.css';
 
-import './main.css/tabler-icons.css'
-import './main.css/fontawesome.css'
+import './main.css/tabler-icons.css';
+import './main.css/fontawesome.css';
 
-import 'file-loader?name=.htaccess!./.htaccess'; 
+import '!file-loader?name=[name].[ext]!./images/fav.png';
+import 'file-loader?name=.htaccess!./.htaccess';
 
 import configureStore from './configureStore';
 
@@ -46,9 +47,9 @@ const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       {/* <LanguageProvider messages={messages}> */}
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
       {/* </LanguageProvider> */}
     </Provider>,
     MOUNT_NODE,
@@ -71,7 +72,7 @@ if (!window.Intl) {
         import('intl/locale-data/jsonp/en.js'),
         import('intl/locale-data/jsonp/de.js'),
       ]),
-    ) 
+    )
     .then(() => render(translationMessages))
     .catch(err => {
       throw err;
@@ -81,5 +82,5 @@ if (!window.Intl) {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install(); 
+  require('offline-plugin/runtime').install();
 }

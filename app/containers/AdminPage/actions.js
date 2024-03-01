@@ -1,13 +1,68 @@
-/*
- *
- * AdminPage actions
- *
- */
+import {
+  SET_ERROR,
+  SET_RESPONCE,
+  SET_LOADING,
+  DELETE_PAYMENT,
+  SET_CAR_ID,
+  SET_PAYMENT_ID,
+  SET_CAR_SHOW,
+  ADD_NEW_PAYMENT,
+  SET_NEW_PAYMENT,
+} from './constants';
 
-import { DEFAULT_ACTION } from './constants';
-
-export function defaultAction() {
+export function setError(error) {
   return {
-    type: DEFAULT_ACTION,
+    type: SET_ERROR,
+    error,
+  };
+}
+export function setResponce(responce) {
+  return {
+    type: SET_RESPONCE,
+    responce,
+  };
+}
+export function setLoading(loading) {
+  return {
+    type: SET_LOADING,
+    loading,
+  };
+}
+
+export function setCarId(carId) {
+  return {
+    type: SET_CAR_ID,
+    carId,
+  };
+}
+
+export function setPaymentId(paymentId) {
+  return {
+    type: SET_PAYMENT_ID,
+    paymentId,
+  };
+}
+export function setCarShow(carShow) {
+  return {
+    type: SET_CAR_SHOW,
+    carShow,
+  };
+}
+export function deletePayment(id) {
+  return {
+    type: DELETE_PAYMENT,
+    id,
+  };
+}
+export function addNewPayment() {
+  return {
+    type: ADD_NEW_PAYMENT,
+  };
+}
+export function setNewPayment(key, value) {
+  return {
+    type: SET_NEW_PAYMENT,
+    key,
+    value,
   };
 }

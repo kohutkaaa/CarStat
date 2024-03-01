@@ -2,10 +2,14 @@ import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function MyNavBar() {
+
+  const getNavLinkClass = (path) => {
+    return window.location.pathname === path ? 'active' : '';
+  }
+
   return (
     <>
        <aside id="layout-menu" className="vh-100 w-100 layout-menu menu-vertical menu bg-menu-theme text-start m-0" >
-          
           <div className="app-brand demo py-2">
           <NavLink to='/' className="app-brand-link">
               <span className=" demo ">
@@ -14,92 +18,39 @@ function MyNavBar() {
               <span className="app-brand-text demo menu-text fw-bold">Car Statistics</span>
             </NavLink>
           </div>
-
           <div className="menu-inner-shadow"></div>
-          {/* {({ isActive }) => isActive ? "menu-item active" : "menu-item" } */}
-
           <ul className="menu-inner py-1">
-            <li className="menu-item active" >
+            <li className={`menu-item ${getNavLinkClass("/about_cars")}`} >
               <NavLink to='/about_cars'  className="menu-link">
                 <i className="menu-icon tf-icons ti ti-car"></i>
                 <div>Мої авто</div>
               </NavLink>
             </li>
-            <li className="menu-item">
+            <li className={`menu-item ${getNavLinkClass("/add_car")}`} >
               <NavLink to='/add_car'  className="menu-link">
                 <i className="menu-icon tf-icons ti ti-plus"></i>
                 <div>Додати авто</div>
               </NavLink>
             </li>
-            
             <li className="menu-header small text-uppercase">
               <span className="menu-header-text">Звітність</span>
             </li>
-
-            <li className="menu-item">
-              <a href="app-email.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-mail"></i>
-                <div data-i18n="Email">Email</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-chat.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-messages"></i>
-                <div data-i18n="Chat">Chat</div>
-              </a>
+            <li className={`menu-item ${getNavLinkClass("/payments")}`} >
+              <NavLink to='/payments'  className="menu-link">
+                <i className="menu-icon tf-icons ti ti-file-analytics"></i>
+                <div data-i18n="Chat">Витрати</div>
+              </NavLink>
             </li>
             <li className="menu-item">
               <a href="app-calendar.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-calendar"></i>
-                <div data-i18n="Calendar">Calendar</div>
+                <i className="menu-icon tf-icons ti ti-chart-line"></i>
+                <div data-i18n="Calendar">Статистика</div>
               </a>
             </li>
             <li className="menu-item">
               <a href="app-kanban.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-layout-kanban"></i>
-                <div data-i18n="Kanban">Kanban</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-email.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-mail"></i>
-                <div data-i18n="Email">Email</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-chat.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-messages"></i>
-                <div data-i18n="Chat">Chat</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-calendar.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-calendar"></i>
-                <div data-i18n="Calendar">Calendar</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-kanban.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-layout-kanban"></i>
-                <div data-i18n="Kanban">Kanban</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-email.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-mail"></i>
-                <div data-i18n="Email">Email</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-chat.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-messages"></i>
-                <div data-i18n="Chat">Chat</div>
-              </a>
-            </li>
-            <li className="menu-item">
-              <a href="app-calendar.html" className="menu-link">
-                <i className="menu-icon tf-icons ti ti-calendar"></i>
-                <div data-i18n="Calendar">Calendar</div>
+                <i className="menu-icon tf-icons ti ti-gas-station"></i>
+                <div data-i18n="Kanban">Топливо</div>
               </a>
             </li>
           </ul>

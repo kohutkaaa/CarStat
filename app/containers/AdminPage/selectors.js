@@ -1,19 +1,7 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-/**
- * Direct selector to the adminPage state domain
- */
-
 const selectAdminPageDomain = state => state.adminPage || initialState;
-
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by AdminPage
- */
 
 const makeSelectAdminPage = () =>
   createSelector(
@@ -21,5 +9,17 @@ const makeSelectAdminPage = () =>
     substate => substate,
   );
 
+const selectDataNewPayment = () =>
+  createSelector(
+    selectAdminPageDomain,
+    substate => substate.newPayment,
+  );
+
+const selectCarId = () =>
+  createSelector(
+    selectAdminPageDomain,
+    substate => substate.carId,
+  );
+
 export default makeSelectAdminPage;
-export { selectAdminPageDomain };
+export { selectAdminPageDomain, selectDataNewPayment, selectCarId };

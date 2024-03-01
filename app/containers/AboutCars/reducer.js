@@ -1,24 +1,22 @@
 import produce from 'immer';
-import { 
+import {
   SET_ERROR,
   SET_RESPONCE,
   SET_LOADING,
   SET_DATA_CARS,
-  SET_NEW_CAR,
-  SET_ID_CAR,
-  SET_DATA_CAR_EDIT,
-  SET_EDIT_CAR
- } from './constants';
+  SET_DATA_NEW_CAR,
+  SET_CAR_FOR_EDITING,
+  SET_DATA_EDIT_CAR,
+} from './constants';
 
- export const initialState = {
-  loading: false,
+export const initialState = {
+  loading: true,
   error: false,
   responce: false,
   dataCars: false,
-  newCar: false,
-  idCar: false,
-  dataCarEdit: false,
-  editCarPut: false,
+  dataNewCar: false,
+  carForEditing: false,
+  dataEditCar: false,
 };
 
 const aboutCarsReducer = (state = initialState, action) =>
@@ -35,18 +33,19 @@ const aboutCarsReducer = (state = initialState, action) =>
         break;
       case SET_DATA_CARS:
         draft.dataCars = action.dataCars;
+        // draft.loading = false;
         break;
-      case SET_ID_CAR:
-        draft.idCar = action.idCar;
+      case SET_CAR_FOR_EDITING:
+        draft.carForEditing = action.carForEditing;
         break;
-      case SET_DATA_CAR_EDIT:
-        draft.dataCarEdit = action.dataCarEdit;
+      case SET_DATA_NEW_CAR:
+        draft.dataNewCar = { ...draft.dataNewCar, [action.key]: action.value };
         break;
-      case SET_NEW_CAR:
-        draft.newCar = { ...draft.newCar, [action.key]: action.value };
-        break;
-      case SET_EDIT_CAR:
-        draft.editCarPut = { ...draft.editCarPut, [action.key]: action.value };
+      case SET_DATA_EDIT_CAR:
+        draft.dataEditCar = {
+          ...draft.dataEditCar,
+          [action.key]: action.value,
+        };
         break;
     }
   });

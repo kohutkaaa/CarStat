@@ -1,7 +1,9 @@
-/*
- *
- * AdminPage constants
- *
- */
-
-export const DEFAULT_ACTION = 'app/AdminPage/DEFAULT_ACTION';
+export const SET_ERROR = 'app/AdminPage/SET_ERROR';
+export const SET_RESPONCE = 'app/AdminPage/SET_RESPONCE';
+export const SET_LOADING = 'app/AdminPage/SET_LOADING';
+export const DELETE_PAYMENT = 'app/AdminPage/DELETE_PAYMENT';
+export const SET_CAR_ID = 'app/AdminPage/SET_CAR_ID';
+export const SET_PAYMENT_ID = 'app/AdminPage/SET_PAYMENT_ID';
+export const SET_CAR_SHOW = 'app/AdminPage/SET_CAR_SHOW';
+export const ADD_NEW_PAYMENT = 'app/AdminPage/ADD_NEW_PAYMENT';
+export const SET_NEW_PAYMENT = 'app/AdminPage/SET_NEW_PAYMENT';

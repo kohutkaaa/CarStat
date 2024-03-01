@@ -9,28 +9,28 @@ const makeSelectAboutCars = () =>
     substate => substate,
   );
 
-const selectIdCar = () =>
+const selectDataNewCar = () =>
   createSelector(
     selectAboutCarsDomain,
-    substate => substate.idCar
-  )
-
-const selectNewCar = () =>
-  createSelector(
-    selectAboutCarsDomain,
-    substate => substate.newCar,
+    substate => substate.dataNewCar,
   );
 
-const selectEditCar = () =>
+const selectDataEditCar = () =>
   createSelector(
     selectAboutCarsDomain,
-    substate => substate.editCarPut,
+    substate => substate.dataEditCar,
+  );
+
+const selectDataCars = () =>
+  createSelector(
+    selectAboutCarsDomain,
+    substate => substate.dataCars,
   );
 
 export default makeSelectAboutCars;
-export { 
+export {
   selectAboutCarsDomain,
-  selectNewCar,
-  selectEditCar,
-  selectIdCar
- };
+  selectDataNewCar,
+  selectDataEditCar,
+  selectDataCars,
+};

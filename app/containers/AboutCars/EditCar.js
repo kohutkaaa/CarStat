@@ -3,60 +3,67 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { useParams } from 'react-router-dom';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import MyNavBar from 'components/MyNavBar/index.jsx';
 import makeSelectAboutCars from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { getCarById } from './actions';
+import { getCarForEditing, setResponce } from './actions';
 
-import MyNavBar from 'components/MyNavBar/index.jsx';
-import Spiners from 'components/Spiners';
-import TitlePage from 'components/TitlePage';
+import SpinnersForLoading from 'components/SpinnersForLoading';
+import PageTitle from './components/PageTitle';
 import AddForm from './components/AddForm';
 
-export function EditCar({
-  state,
-  getCarById
-}) {
+export function EditCar({ state, getCarForEditing, setResponce }) {
   useInjectReducer({ key: 'aboutCars', reducer });
   useInjectSaga({ key: 'aboutCars', saga });
 
+  const { id } = useParams();
+
+  const setResponseFalse = bool => {
+    setResponce(bool);
+  };
+
   useEffect(() => {
-    getCarById(state.idCar)
-  }, [])
+    getCarForEditing(id);
+  }, []);
 
-
-  return(
+  return (
     <>
-     <div className="row">
-        <div className="col-3">
-          <MyNavBar/>
-        </div>
-        <div className="col-9">
-        {state.loading === true ? (
-            <Spiners/>
-          ) : (
-              <>
-                <TitlePage
-                  titleText='Заповніть форму, щоб редагувати свій автомобіль'
-                />
-                <AddForm
-                  editTrue={true}
-                />
-              </>
-          )}
-        </div>
-      </div>
+      <div className="row">
+       <div className="col-3">
+         <MyNavBar />
+       </div>
+       <div className="col-9">
+          {state.loading === true ? (
+           <SpinnersForLoading />
+         ) : state.responce === false ? (
+            <>
+              <PageTitle textInTitle="Заповніть форму, щоб редагувати свій автомобіль" />
+              <AddForm editTrue={true} />
+            </>
+           ) : (
+            <PageTitle
+               textInTitle='Ваш автомобіль було успішно редаговано ✔️'
+               textInButton='Повернутись до моїх авто'
+              setResponseFalse={setResponseFalse}
+              linkInButton="/about_cars"
+             />
+           )
+        }
+       </div>
+     </div>
     </>
-  )
+  );
 }
-
 
 EditCar.propTypes = {
   state: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  getCarById: PropTypes.func.isRequired
+  getCarForEditing: PropTypes.func.isRequired,
+  setResponce: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -65,7 +72,12 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCarById: (id) => { dispatch(getCarById(id)) },
+    getCarForEditing: id => {
+      dispatch(getCarForEditing(id));
+    },
+    setResponce: bool => {
+      dispatch(setResponce(bool));
+    },
   };
 }
 

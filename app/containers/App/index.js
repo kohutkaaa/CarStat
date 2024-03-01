@@ -1,12 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import {AdminPage} from '../AdminPage/Loadable';
-import {
-  AboutCars,
-  AddCar,
-  EditCar
-} from '../AboutCars/Loadable';
+import { AdminPage, PaymentsPage } from '../AdminPage/Loadable';
+import { AboutCars, AddCar, EditCar } from '../AboutCars/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
@@ -15,6 +11,7 @@ export default function App() {
     <>
       <Switch>
         <Route exact path="/" component={AdminPage} />
+        <Route exact path="/payments" component={PaymentsPage} />
         <Route exact path="/about_cars" component={AboutCars} />
         <Route exact path="/add_car" component={AddCar} />
         <Route exact path="/edit_car/:id" component={EditCar} />

@@ -1,18 +1,47 @@
-/*
- *
- * AdminPage reducer
- *
- */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import {
+  SET_ERROR,
+  SET_RESPONCE,
+  SET_LOADING,
+  SET_CAR_ID,
+  SET_PAYMENT_ID,
+  SET_CAR_SHOW,
+  SET_NEW_PAYMENT,
+} from './constants';
 
-export const initialState = {};
+export const initialState = {
+  loading: true,
+  error: false,
+  responce: false,
+  carId: false,
+  paymentId: false,
+  carShow: false,
+  newPayment: false,
+};
 
-/* eslint-disable default-case, no-param-reassign */
 const adminPageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case SET_ERROR:
+        draft.error = action.error;
+        break;
+      case SET_RESPONCE:
+        draft.responce = action.responce;
+        break;
+      case SET_LOADING:
+        draft.loading = action.loading;
+        break;
+      case SET_CAR_ID:
+        draft.carId = action.carId;
+        break;
+      case SET_PAYMENT_ID:
+        draft.paymentId = action.paymentId;
+        break;
+      case SET_CAR_SHOW:
+        draft.carShow = action.carShow;
+        break;
+      case SET_NEW_PAYMENT:
+        draft.newPayment = { ...draft.newPayment, [action.key]: action.value };
         break;
     }
   });

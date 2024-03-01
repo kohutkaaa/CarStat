@@ -6,56 +6,49 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import MyNavBar from 'components/MyNavBar/index.jsx';
+import SpinnersForLoading from 'components/SpinnersForLoading';
 import makeSelectAboutCars from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import MyNavBar from 'components/MyNavBar/index.jsx';
-import Spiners from 'components/Spiners';
-import TitlePage from 'components/TitlePage';
+import PageTitle from './components/PageTitle';
 import AddForm from './components/AddForm';
 import { setResponce } from './actions';
 
-export function AddCar({
-  setResponce,
-  state
-}) {
+export function AddCar({ setResponce, state }) {
   useInjectReducer({ key: 'aboutCars', reducer });
   useInjectSaga({ key: 'aboutCars', saga });
 
-  const callBack = (bool) => {
-    setResponce(bool)
-  }
+  const setResponseFalse = bool => {
+    setResponce(bool);
+  };
 
-  return(
+  return (
     <>
-     <div className="row">
+      <div className="row">
         <div className="col-3">
-          <MyNavBar/>
+          <MyNavBar />
         </div>
         <div className="col-9">
-        {state.loading === true ? (
-            <Spiners/>
+          {state.responce === false ? (
+            <>
+              <PageTitle textInTitle="Заповніть форму, щоб зберегти свій автомобіль" />
+              <AddForm />
+            </>
+          ) : state.loading === true ? (
+            <SpinnersForLoading />
           ) : (
-            state.responce === false ? (
-              <>
-                <TitlePage
-                  titleText='Заповніть форму, щоб зберегти свій автомобіль'
-                />
-                <AddForm/>
-              </>
-            ) : (
-              <TitlePage
-                titleText='Ваш автомобіль було успішно додано ✔️'
-                buttonText=' + Додати ще авто'
-                callBack={callBack}
-              />
-            )
+            <PageTitle
+              textInTitle="Ваш автомобіль було успішно додано ✔️"
+              textInButton=" + Додати ще авто"
+              setResponseFalse={setResponseFalse}
+            />
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
 
 AddCar.propTypes = {
@@ -69,8 +62,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCars: () => { dispatch(getCars()) },
-    setResponce: (bool) => { dispatch(setResponce(bool)) }
+    setResponce: bool => {
+      dispatch(setResponce(bool));
+    },
   };
 }
 
